@@ -1,4 +1,6 @@
-# 1.1 * to unpack the iterable
+from collections import deque
+
+# 1.1-1.2 * to unpack the iterable
 p = (4, 5)
 x, y = p
 assert x == 4 and y == 5
@@ -48,5 +50,29 @@ record = ('ACME', 50, 123.45, (12, 18, 2012))
 name, *_, (*_, year) = record
 assert name == 'ACME' and year == 2012
 
+
 #################################################
-# reserve last N elements
+# 1.3 reserve last N elements
+# collections.deque
+def search(lines, pattern, history=5):
+    previous_lines = deque(maxlen=history)
+    for li in lines:
+        if pattern in li:
+            yield li, previous_lines
+        previous_lines.append(li)
+
+
+# delete oldest item in deque
+# appendleft
+q = deque(maxlen=3)
+q.append(1)
+q.append(2)
+q.append(3)
+q.append(4)
+print(q)  # 2 3 4
+q.pop()  # 4 -> 2 3
+q.popleft()  # 2 -> 3
+print(q)
+
+#################################################
+# 1.4 find max or min N elements
