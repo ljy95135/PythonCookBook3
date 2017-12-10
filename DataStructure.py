@@ -78,14 +78,49 @@ print(q)
 #################################################
 # 1.4 find max or min N elements
 nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
-print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]
-print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]
+print(heapq.nlargest(3, nums))  # Prints [42, 37, 23]
+print(heapq.nsmallest(3, nums))  # Prints [-4, 1, 2]
 
 nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
 heapq.heapify(nums)
-print(nums) # [-4, 2, 1, 23, 7, 2, 18, 23, 42, 37, 8]
-print(heapq.heappop(nums)) #nlen(nums)-1
+print(nums)  # [-4, 2, 1, 23, 7, 2, 18, 23, 42, 37, 8]
+print(heapq.heappop(nums))  # nlen(nums)-1
 print(nums)
+
 
 #################################################
 # 1.5 Priority Queue
+class PriorityQueue:
+    def __init__(self):
+        self._queue = []
+        self._index = 0
+
+    def push(self, item, priority):
+        heapq.heappush(self._queue, (-priority, self._index, item))
+        self._index += 1
+
+    def pop(self):
+        return heapq.heappop(self._queue)[-1]
+
+
+class Item:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return 'Item({!r})'.format(self.name)
+
+
+q = PriorityQueue()
+q.push(Item('foo'), 1)
+q.push(Item('bar'), 5)
+q.push(Item('spam'), 4)
+q.push(Item('grok'), 1)
+
+# higher priority first
+# return the smallest: 1. -priority 2. index
+print(q.pop())  # bar
+print(q.pop())  # spam
+print(q.pop())  # foo
+
+print((1, "name") < (2, "big"))  # True
