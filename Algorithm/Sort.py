@@ -1,4 +1,5 @@
 # author: Jiangyi Lin
+import random
 
 
 def bubble_sort(sort_list):
@@ -136,7 +137,7 @@ def quick_sort(sort_list):
     :rtype: list
     """
 
-    # 3 number switch
+    # ! 3 number switch
     def sort(low, high):
         if low >= high:
             return
@@ -160,4 +161,49 @@ def quick_sort(sort_list):
     return result
 
 
-def randomized_quick_sort()
+def randomized_quick_sort(sort_list):
+    """
+    This is function implementing randomized quick sort.
+    The pivot is chosen randomly.
+
+    worst
+    T(n)=O(n^2)
+    average
+    T(n)=O(nlogn)
+
+    S(n)=O(1)
+
+    :param sort_list: The list we need to sort
+    :return: sorted list
+    :rtype: list
+    """
+
+    # ! 3 number switch
+    def sort(low, high):
+        if low >= high:
+            return
+
+        # random pivot
+        r = random.choice(range(low, high + 1))
+        tmp = result[low]
+        result[low] = result[r]
+        result[r] = tmp
+
+        i = low
+        j = high
+        pivot = result[i]
+        while i < j:
+            while i < j and result[j] >= pivot:
+                j -= 1
+            result[i] = result[j]
+            while i < j and result[i] <= pivot:
+                i += 1
+            result[j] = result[i]
+            result[i] = pivot
+
+        sort(low, i - 1)
+        sort(i + 1, high)
+
+    result = [i for i in sort_list]
+    sort(0, len(result) - 1)
+    return result

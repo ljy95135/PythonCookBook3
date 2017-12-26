@@ -1,7 +1,7 @@
 # author: Jiangyi Lin
 import unittest
 
-from Algorithm.Sort import counting_sort, bubble_sort, merge_sort, quick_sort
+from Algorithm.Sort import counting_sort, bubble_sort, merge_sort, quick_sort, randomized_quick_sort
 
 
 class TestSort(unittest.TestCase):
@@ -44,6 +44,14 @@ class TestSort(unittest.TestCase):
         r1 = quick_sort(TestSort.list1)
         r2 = quick_sort(TestSort.list2)
         r3 = quick_sort(TestSort.list3)
+        self.assertEqual(r1, TestSort.result_1_2)
+        self.assertEqual(r2, TestSort.result_1_2)
+        self.assertEqual(r3, TestSort.result_3)
+
+    def test_randomized_quick(self):
+        r1 = randomized_quick_sort(TestSort.list1)
+        r2 = randomized_quick_sort(TestSort.list2)
+        r3 = randomized_quick_sort(TestSort.list3)
         self.assertEqual(r1, TestSort.result_1_2)
         self.assertEqual(r2, TestSort.result_1_2)
         self.assertEqual(r3, TestSort.result_3)
