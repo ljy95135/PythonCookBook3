@@ -100,7 +100,7 @@ class PriorityQueue:
         self._index += 1
 
     def pop(self):
-        return heapq.heappop(self._queue)[-1]
+        return heapq.heappop(self._queue)[-1] # item
 
 
 class Item:
