@@ -19,7 +19,7 @@ for word in morewords:
 word_counts.update(morewords)
 
 # can use arithmetic
-a = Counter(words)
-b = Counter(morewords)
+a = collections.Counter(words)
+b = collections.Counter(morewords)
 c = a + b
 d = a - b
