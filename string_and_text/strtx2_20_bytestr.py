@@ -20,7 +20,7 @@ data = b'FOO:BAR,SPAM'
 print(re.split(b'[:,]', data))
 
 # index of bytes return int
-# cant use format
+# can't use format, use encode!
 print('{:10s} {:10d} {:10.2f}'.format('ACME', 100, 490.1).encode('ascii'))
 
 # filename
